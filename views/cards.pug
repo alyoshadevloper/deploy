@@ -1,0 +1,27 @@
+extends layout
+block content
+ h1= title
+ h2 Reklamaning muallifi :
+ h3= names.name 
+ .container
+    .row
+       .col-8
+            .product 
+                .product_imgs
+                    img(src= '/'+db.photo , alt="")
+                    p.saleing= db.sale
+                        | %
+                h2= db.title
+                .price
+                    p= db.price
+                     | $
+                    p.sale_price= db.price - (db.price * db.sale / 100) 
+                    | SALE
+                .product_bottom
+                    p.like 
+                        span= db.like
+                    p.date=  db.dateNow.toDateString()
+                    p.category= db.category
+            if user
+             if user.id ==  names.id
+                a(href="/productd/edit/"+db.id class='btn btn-success mt-5') Ozgartirish

@@ -1,0 +1,10 @@
+extends layout
+block content
+  h1= title 
+  form(action="/reg/regis" method="POST"    )
+      input(type="text" name="name" placeholder="Ism")
+      input(type="text" name="email" placeholder="email")
+      input(type="text" name="username" placeholder="username")
+      input(type="text" name="password" placeholder="parol")
+      input(type="text" name="password2" placeholder="parolni qaytadan kiriting")
+      button.btn-danger royhatdan otish

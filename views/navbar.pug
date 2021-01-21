@@ -1,0 +1,31 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-danger
+        a.navbar-brand(href='/') Bosh sahifa
+    
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+               if user     
+                 li.nav-item
+                    a.nav-link(href='/productd/add') Mahsulot qoshish sahifasi
+            form(action="/search" class='search')
+                input(type="text" name="search" placeholder="Nima topish kerak")
+                button Qidirish 
+            .kurs
+             if kurs 
+              each valyuta in kurs 
+               if valyuta.Ccy == "USD"
+                p= valyuta.Ccy
+                p= valyuta.Rate
+             else
+               each valyuta in kurs  ? valyuta : []
+                if valyuta.Ccy == "USD"
+                    p= valyuta.Ccy
+                    p= valyuta.Rate
+            ul.navbar-nav.mr-auto
+             if user 
+                li.nav-item
+                    a.nav-link(href='/logout') LogOut
+             else
+                li.nav-item
+                    a.nav-link(href='/reg/regis') Register
+                li.nav-item
+                    a.nav-link(href='/login/log') Login                

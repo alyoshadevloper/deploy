@@ -1,0 +1,29 @@
+extends layout
+block content
+ h1= title
+ 
+ .container
+    .row
+      each db in datas
+       .col-4
+            .product 
+                .product_img(cardId = '/cards/'+db.id)
+                    img(src='/'+db.photo , alt="")
+                    p.saleing= db.sale
+                        | %
+                h2= db.title
+                .price
+                    p= db.price
+                     | $
+                    p.sale_price= db.price - (db.price * db.sale / 100) 
+                    | SALE
+                .product_bottom
+                    p.like 
+                        span(class="wirteLike")= db.like
+                        span(class="clickLike ml-5" likeId = '/'+db.id) like
+                    p.date=  db.dateNow.toDateString()
+                    p.category= db.category
+    .pages
+       if pages
+        -for(var i = 1; i <= pages; i++) 
+            a(href="/?page="+i)=  i 
