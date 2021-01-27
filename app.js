@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose')
 // const bodyParser = require('body-parser')
+const helmet = require('helmet')
 const passport = require('passport')
 const rIndex = require('./routers/index')
 const rAdd = require('./routers/add')
@@ -14,6 +15,7 @@ const session = require('express-session')
 const app = express()
 
  
+app.use(helmet())
  
 
 // view engine setup
